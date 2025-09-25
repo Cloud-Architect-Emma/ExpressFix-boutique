@@ -38,7 +38,7 @@ Cart Preview![Cart Preview](screenshots/cart-preview.PNG)
 
 Checkout Form![Checkout Form](screenshots/checkout-form.PNG)
 
-Mobile View![Mobile View](screenshots/Mobile View.PNG)
+Mobile View![Mobile View](screenshots/mobile-view.PNG)
 
  Technologies Used
 HTML5
