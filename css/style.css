@@ -1,8 +1,19 @@
-/* General page styling */
+/* ===== General page styling ===== */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #ffe6f0, #fff);
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
 nav {
   background-color: #ff3399;
-  padding: 10px;
+  padding: 10px 0;
   text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 nav ul {
@@ -18,13 +29,41 @@ nav a {
   color: white;
   text-decoration: none;
   font-weight: bold;
+  padding: 5px 10px;
 }
 
 nav a:hover {
   text-decoration: underline;
 }
 
-/* 🔍 Search bar styling */
+/* Cart preview in nav */
+#cartPreview {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  background-color: deeppink;
+  padding: 5px 10px;
+  border-radius: 20px;
+  transition: background 0.3s;
+}
+
+#cartPreview:hover {
+  background-color: hotpink;
+}
+
+/* ===== Header styling ===== */
+header {
+  background-color: #ff66b2;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+/* ===== Search bar ===== */
 #search {
   text-align: center;
   margin: 20px 0;
@@ -44,24 +83,33 @@ nav a:hover {
   background-size: 20px;
 }
 
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to right, #ffe6f0, #fff);
-  margin: 0;
-  padding: 20px;
-  color: #333;
-}
-
-/* Header styling */
-header {
-  background-color: #ff66b2;
+/* Category filter buttons */
+#categoryFilter button {
+  margin: 5px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #ff99cc;
   color: white;
-  text-align: center;
-  padding: 30px 20px;
-  margin-bottom: 40px;
+  transition: background 0.3s;
 }
 
-/* Product grid layout */
+#categoryFilter button:hover {
+  background-color: #ff66b2;
+}
+
+/* Sort dropdown */
+#sortSelect {
+  margin: 20px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: 1px solid #ff3399;
+  font-size: 16px;
+}
+
+/* ===== Product grid ===== */
 .product-grid {
   display: flex;
   flex-wrap: wrap;
@@ -69,29 +117,46 @@ header {
   justify-content: center;
 }
 
-/* Individual product card */
+/* Product card */
 .product {
   border: 1px solid #ccc;
   padding: 15px;
-  width: 300px;
+  width: 280px;
   border-radius: 10px;
   background-color: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
 }
 
 .product:hover {
-  transform: scale(1.02);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
 }
 
-/* Product image styling */
+/* Product image */
 .product img {
   width: 100%;
   height: auto;
   border-radius: 8px;
+  margin-bottom: 10px;
 }
 
-/* Button styling */
+/* Product title */
+.product h3 {
+  margin: 10px 0 5px 0;
+  font-size: 18px;
+  color: #ff3399;
+}
+
+/* Price styling */
+.product p {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ff66b2;
+}
+
+/* Add to Cart button */
 button {
   background-color: hotpink;
   color: white;
@@ -101,21 +166,14 @@ button {
   cursor: pointer;
   border-radius: 5px;
   font-size: 16px;
+  transition: background 0.3s;
 }
 
 button:hover {
   background-color: deeppink;
 }
 
-#cartPreview {
-  text-align: right;
-  padding: 10px 20px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #ff3399;
-}
-
-/* Cart section styling */
+/* ===== Cart Section ===== */
 #cart-section {
   margin-top: 40px;
   background-color: #fff0f5;
@@ -123,16 +181,46 @@ button:hover {
   border-radius: 10px;
 }
 
-/* Checkout form styling */
+#cart-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+#cart-section li {
+  margin: 5px 0;
+}
+
+/* Remove buttons in cart */
+#cart-section li button,
+#stickyCart li button {
+  background-color: #ff3399;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 3px 6px;
+  cursor: pointer;
+  font-size: 12px;
+  margin-left: 10px;
+  transition: background 0.3s;
+}
+
+#cart-section li button:hover,
+#stickyCart li button:hover {
+  background-color: deeppink;
+}
+
+/* Checkout form */
 form input {
   display: block;
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
   font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ff3399;
 }
 
-/* Footer styling */
+/* Footer */
 footer {
   text-align: center;
   padding: 20px;
@@ -141,8 +229,53 @@ footer {
   margin-top: 40px;
 }
 
-/* Responsive design for mobile */
-@media (max-width: 600px) {
+/* ===== Sticky Cart Sidebar ===== */
+#stickyCart {
+  position: fixed;
+  right: 20px;
+  top: 100px;
+  width: 250px;
+  max-height: 70vh;
+  overflow-y: auto;
+  background-color: #fff0f5;
+  border: 2px solid #ff3399;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+#stickyCart h3 {
+  color: #ff3399;
+  margin-top: 0;
+}
+
+#stickyCart ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+#stickyCart li {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+#stickyCart p {
+  font-weight: bold;
+  color: #ff66b2;
+  margin-top: 10px;
+  text-align: center;
+}
+
+#stickyCart button {
+  width: auto;
+  padding: 5px 8px;
+  margin-top: 5px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
   .product-grid {
     flex-direction: column;
     align-items: center;
@@ -150,5 +283,13 @@ footer {
 
   .product {
     width: 90%;
+  }
+
+  #searchInput {
+    width: 90%;
+  }
+
+  #stickyCart {
+    display: none;
   }
 }

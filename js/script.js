@@ -13,37 +13,44 @@ function addToCart(name, price) {
   updateCart();
 }
 
-// Update cart display
+// Update cart display (both main and sticky)
 function updateCart() {
-  let cartList = document.getElementById("cart");
+  const cartList = document.getElementById("cart");
+  const stickyCart = document.getElementById("stickyCart");
   cartList.innerHTML = "";
+  if (stickyCart) stickyCart.innerHTML = "";
 
-document.getElementById("cartCount").innerText = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  // Update cart count in nav
+  document.getElementById("cartCount").innerText = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   cartItems.forEach((item, index) => {
+    // Main cart
     let li = document.createElement("li");
     li.innerHTML = `${item.name} x${item.quantity} - £${(item.price * item.quantity).toFixed(2)} 
-  <button onclick="removeOne(${index})">−</button>`;
+      <button onclick="removeOne(${index})">−</button>`;
     cartList.appendChild(li);
+
+    // Sticky cart
+    if (stickyCart) {
+      let stickyLi = document.createElement("li");
+      stickyLi.innerHTML = `${item.name} x${item.quantity} - £${(item.price * item.quantity).toFixed(2)}
+        <button onclick="removeOne(${index})">−</button>`;
+      stickyCart.appendChild(stickyLi);
+    }
   });
 
+  // Update total price in main cart
   document.getElementById("total").innerText = "Total: £" + totalPrice.toFixed(2);
+
+  // Sticky cart total
+  if (stickyCart) {
+    let totalP = document.createElement("p");
+    totalP.innerText = "Total: £" + totalPrice.toFixed(2);
+    stickyCart.appendChild(totalP);
+  }
 }
 
-// Remove item from cart
-function removeFromCart(index) {
-  totalPrice -= cartItems[index].price * cartItems[index].quantity;
-  cartItems.splice(index, 1);
-  updateCart();
-}
-
-function clearCart() {
-  cartItems = [];
-  totalPrice = 0;
-  updateCart();
-}
-
-
+// Remove one item or decrease quantity
 function removeOne(index) {
   if (cartItems[index].quantity > 1) {
     cartItems[index].quantity -= 1;
@@ -55,13 +62,29 @@ function removeOne(index) {
   updateCart();
 }
 
-// Checkout confirmation
-function checkout(event) {
-  event.preventDefault();
-  alert("✅ Order placed! Thank you, Emmanuela.");
+// Remove entire item from cart
+function removeFromCart(index) {
+  totalPrice -= cartItems[index].price * cartItems[index].quantity;
+  cartItems.splice(index, 1);
+  updateCart();
+}
+
+// Clear entire cart
+function clearCart() {
   cartItems = [];
   totalPrice = 0;
   updateCart();
+}
+
+// Checkout confirmation
+function checkout(event) {
+  event.preventDefault();
+  if (cartItems.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+  alert("✅ Order placed! Thank you, Emmanuela.");
+  clearCart();
 }
 
 // Product search filter
@@ -79,11 +102,7 @@ function filterProducts() {
 function showCategory(category) {
   const sections = document.querySelectorAll(".category");
   sections.forEach(section => {
-    if (category === "all" || section.id === category) {
-      section.style.display = "block";
-    } else {
-      section.style.display = "none";
-    }
+    section.style.display = (category === "all" || section.id === category) ? "block" : "none";
   });
 }
 
@@ -110,3 +129,13 @@ function sortProducts() {
     products.forEach(p => grid.appendChild(p));
   });
 }
+
+// Initialize sticky cart if it exists
+window.addEventListener("DOMContentLoaded", () => {
+  if (!document.getElementById("stickyCart")) {
+    const stickyCartDiv = document.createElement("div");
+    stickyCartDiv.id = "stickyCart";
+    stickyCartDiv.innerHTML = "<h3>Cart 🛒</h3><ul></ul>";
+    document.body.appendChild(stickyCartDiv);
+  }
+});

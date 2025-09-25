@@ -6,123 +6,160 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<nav>
-  <ul>
-    <li><a href="#dresses">Dresses</a></li>
-    <li><a href="#shoes">Shoes</a></li>
-    <li><a href="#bags">Bags</a></li>
-    <li><a href="#accessories">Accessories</a></li>
-    <li><a href="#cart-section">Cart</a></li>
-  </ul>
-<div id="cartPreview">
-  🛒 Cart (<span id="cartCount">0</span>)
-</div>
-</nav>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#dresses">Dresses</a></li>
+      <li><a href="#shoes">Shoes</a></li>
+      <li><a href="#bags">Bags</a></li>
+      <li><a href="#accessories">Accessories</a></li>
+      <li><a href="#cart-section">Cart</a></li>
+    </ul>
+    <div id="cartPreview" onclick="document.getElementById('cart-section').scrollIntoView({behavior:'smooth'})">
+      🛒 Cart (<span id="cartCount">0</span>)
+    </div>
+  </nav>
+
+  <!-- Header -->
   <header>
     <h1>ExpressFit Boutique</h1>
     <p>Fashion that speaks your style</p>
   </header>
-<section id="search">
-  <input type="text" id="searchInput" placeholder="Search products..." onkeyup="filterProducts()">
-</section>
-<div id="categoryFilter">
-  <button onclick="showCategory('all')">All</button>
-  <button onclick="showCategory('dresses')">Dresses</button>
-  <button onclick="showCategory('shoes')">Shoes</button>
-  <button onclick="showCategory('bags')">Bags</button>
-  <button onclick="showCategory('accessories')">Accessories</button>
-</div>
 
-<button onclick="clearCart()">Clear Cart</button>
+  <!-- Search -->
+  <section id="search">
+    <input type="text" id="searchInput" placeholder="Search products..." onkeyup="filterProducts()">
+  </section>
 
-<select id="sortSelect" onchange="sortProducts()">
-  <option value="default">Sort by</option>
-  <option value="name">Name (A-Z)</option>
-  <option value="priceLow">Price (Low to High)</option>
-  <option value="priceHigh">Price (High to Low)</option>
-</select>
+  <!-- Category Filter -->
+  <div id="categoryFilter" style="text-align:center; margin: 20px 0;">
+    <button onclick="showCategory('all')">All</button>
+    <button onclick="showCategory('dresses')">Dresses</button>
+    <button onclick="showCategory('shoes')">Shoes</button>
+    <button onclick="showCategory('bags')">Bags</button>
+    <button onclick="showCategory('accessories')">Accessories</button>
+  </div>
+
+  <!-- Sort -->
+  <div style="text-align:center; margin-bottom: 20px;">
+    <select id="sortSelect" onchange="sortProducts()">
+      <option value="default">Sort by</option>
+      <option value="name">Name (A-Z)</option>
+      <option value="priceLow">Price (Low to High)</option>
+      <option value="priceHigh">Price (High to Low)</option>
+    </select>
+  </div>
+
+  <!-- Main Content -->
   <main>
+
     <!-- Dresses -->
-     <section class="category" id="dresses">
+    <section class="category" id="dresses">
       <h2>Dresses</h2>
       <div class="product-grid">
         <div class="product">
-          <img src="https://picsum.photos/300?random=1" alt="Pink Dress">
+          <img src="https://img.kwcdn.com/product/fancy/d87e347f-b451-42ec-b74c-a78c564794f8.jpg?imageView2/2/w/800/q/70/format/webp" alt="Pink Dress">
           <h3>Pink Dress</h3>
           <p>£25</p>
           <button onclick="addToCart('Pink Dress', 25)">Add to Cart</button>
         </div>
         <div class="product">
-          <img src="https://picsum.photos/300?random=2" alt="Red Dress">
+          <img src="https://www.promformal.co.uk/cdn/shop/products/JTA7331-01.jpg?v=1682344946" alt="Red Dress">
           <h3>Red Dress</h3>
           <p>£30</p>
           <button onclick="addToCart('Red Dress', 30)">Add to Cart</button>
+        </div>
+        <div class="product">
+          <img src="https://img.kwcdn.com/product/fancy/ecbef418-58bd-4d2d-a0cf-9424bc26ed59.jpg?imageView2/2/w/800/q/70/format/webp" alt="Green Dress">
+          <h3>Green Dress</h3>
+          <p>£28</p>
+          <button onclick="addToCart('Green Dress', 28)">Add to Cart</button>
         </div>
       </div>
     </section>
 
     <!-- Shoes -->
-     <section class="category" id="shoes">
+    <section class="category" id="shoes">
       <h2>Shoes</h2>
       <div class="product-grid">
         <div class="product">
-          <img src="https://picsum.photos/300?random=3" alt="Blue Shoes">
+          <img src="https://img.kwcdn.com/product/fancy/e040eba7-c18e-4235-9551-251afe940899.jpg?imageView2/2/w/800/q/70/format/webp" alt="Blue Shoes">
           <h3>Blue Shoes</h3>
           <p>£40</p>
           <button onclick="addToCart('Blue Shoes', 40)">Add to Cart</button>
         </div>
         <div class="product">
-          <img src="https://picsum.photos/300?random=4" alt="White Sneakers">
+          <img src="https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/34633fc43568a56125c2905f06b368f8.jpg?imageView2/2/w/500/q/60/format/webp" alt="White Sneakers">
           <h3>White Sneakers</h3>
           <p>£35</p>
           <button onclick="addToCart('White Sneakers', 35)">Add to Cart</button>
+        </div>
+        <div class="product">
+          <img src="https://img.kwcdn.com/product/fancy/58ed8015-910f-4d0f-9e62-085dd4d8db9a.jpg?imageView2/2/w/800/q/70/format/webp" alt="Black Strappy Sandals">
+          <h3>Black Strappy Sandals</h3>
+          <p>£38</p>
+          <button onclick="addToCart('Black Strappy Sandals', 38)">Add to Cart</button>
         </div>
       </div>
     </section>
 
     <!-- Bags -->
-     <section class="category" id="bags">
+    <section class="category" id="bags">
       <h2>Bags</h2>
       <div class="product-grid">
         <div class="product">
-          <img src="https://picsum.photos/300?random=5" alt="Leather Bag">
+          <img src="https://savemybag.jp/cdn/shop/files/IMG-7893.jpg" alt="Leather Bag">
           <h3>Leather Bag</h3>
           <p>£45</p>
           <button onclick="addToCart('Leather Bag', 45)">Add to Cart</button>
         </div>
         <div class="product">
-          <img src="https://picsum.photos/300?random=6" alt="Tote Bag">
+          <img src="https://cdn-images.farfetch-contents.com/18/43/54/84/18435484_39539770_600.jpg" alt="Tote Bag">
           <h3>Tote Bag</h3>
           <p>£28</p>
           <button onclick="addToCart('Tote Bag', 28)">Add to Cart</button>
+        </div>
+        <div class="product">
+          <img src="https://img.kwcdn.com/product/fancy/2260392d-c60e-411e-ad9c-f234bf4be8a9.jpg?imageView2/2/w/800/q/70/format/webp" alt="Evening Clutch">
+          <h3>Evening Clutch</h3>
+          <p>£32</p>
+          <button onclick="addToCart('Evening Clutch', 32)">Add to Cart</button>
         </div>
       </div>
     </section>
 
     <!-- Accessories -->
-     <section class="category" id="accessories">
+    <section class="category" id="accessories">
       <h2>Accessories</h2>
       <div class="product-grid">
         <div class="product">
-          <img src="https://picsum.photos/300?random=7" alt="Sunglasses">
+          <img src="https://img.kwcdn.com/product/open/f09c16e32daf474e83c6809d87dc4efd-goods.jpeg?imageView2/2/w/800/q/70/format/webp" alt="Sunglasses">
           <h3>Sunglasses</h3>
           <p>£15</p>
           <button onclick="addToCart('Sunglasses', 15)">Add to Cart</button>
         </div>
         <div class="product">
-          <img src="https://picsum.photos/300?random=8" alt="Gold Necklace">
+          <img src="https://img.kwcdn.com/product/fmket/4fc5ca28727893ee311b44eeab0af39f.jpg?imageView2/2/w/800/q/70/format/webp" alt="Gold Necklace">
           <h3>Gold Necklace</h3>
           <p>£22</p>
           <button onclick="addToCart('Gold Necklace', 22)">Add to Cart</button>
         </div>
+        <div class="product">
+          <img src="https://img.kwcdn.com/product/fancy/f38f6c00-daa8-45e0-a88a-b36023f60aeb.jpg?imageView2/2/w/800/q/70/format/webp" alt="Body Chain">
+          <h3>Body Chain</h3>
+          <p>£18</p>
+          <button onclick="addToCart('Body Chain', 18)">Add to Cart</button>
+        </div>
       </div>
     </section>
 
-    <!-- Cart and Checkout -->
+    <!-- Cart Section -->
     <section id="cart-section">
       <h2>Your Cart 🛒</h2>
       <ul id="cart"></ul>
       <p id="total">Total: £0</p>
+      <button onclick="clearCart()">Clear Cart</button>
 
       <h3>Checkout</h3>
       <form onsubmit="checkout(event)">
@@ -132,8 +169,10 @@
         <button type="submit">Place Order</button>
       </form>
     </section>
+
   </main>
 
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025 ExpressFit Boutique. All rights reserved.</p>
   </footer>
