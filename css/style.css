@@ -1,0 +1,154 @@
+/* General page styling */
+nav {
+  background-color: #ff3399;
+  padding: 10px;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* 🔍 Search bar styling */
+#search {
+  text-align: center;
+  margin: 20px 0;
+}
+
+#searchInput {
+  width: 60%;
+  max-width: 400px;
+  padding: 12px 40px 12px 15px;
+  font-size: 16px;
+  border: 2px solid #ff3399;
+  border-radius: 25px;
+  outline: none;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Magnifying_glass_icon.svg/32px-Magnifying_glass_icon.svg.png');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 20px;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #ffe6f0, #fff);
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+/* Header styling */
+header {
+  background-color: #ff66b2;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  margin-bottom: 40px;
+}
+
+/* Product grid layout */
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Individual product card */
+.product {
+  border: 1px solid #ccc;
+  padding: 15px;
+  width: 300px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.product:hover {
+  transform: scale(1.02);
+}
+
+/* Product image styling */
+.product img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Button styling */
+button {
+  background-color: hotpink;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: deeppink;
+}
+
+#cartPreview {
+  text-align: right;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ff3399;
+}
+
+/* Cart section styling */
+#cart-section {
+  margin-top: 40px;
+  background-color: #fff0f5;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Checkout form styling */
+form input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+/* Footer styling */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #ff66b2;
+  color: white;
+  margin-top: 40px;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 600px) {
+  .product-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product {
+    width: 90%;
+  }
+}
