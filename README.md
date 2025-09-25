@@ -3,6 +3,11 @@
 
 ExpressFix Boutique is a responsive fashion e-commerce prototype built with HTML, CSS, and JavaScript. It simulates a modern online shopping experience with dynamic product interaction, real-time cart management, and intuitive filtering.
 
+
+## 🌐 Live Demo
+
+Visit the site: [ExpressFix Boutique](https://cloud-architect-emma.github.io/ExpressFix-boutique/)
+
 ## Features
 
 - Live cart preview with quantity tracking
